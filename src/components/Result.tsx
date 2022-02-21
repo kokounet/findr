@@ -5,7 +5,7 @@ import { FunctionComponent } from "react";
 
 const FaIcon = styled(FontAwesomeIcon)`
     //color: var(--primary-color);
-    margin: 0 0.3em;
+    margin: 0 0.4em;
 `;
 
 const icons = {
@@ -17,18 +17,18 @@ const icons = {
     'sound': () => <FaIcon icon={faFileAudio} />,
 };
 
-const Item = styled.div`
+const Container = styled.div`
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: baseline;
     text-align: left;
-    margin: 0.4em 0;
+    margin: 0.2em 0;
 `;
 
 const Path = styled.div`
     color: gray;
     margin: 0 0.2em;
-    font-size: 0.8em;
+    font-size: 0.7em;
 `;
 
 const Name = styled.div`
@@ -42,9 +42,9 @@ export type Props = {
 
 export const Result: FunctionComponent<Props> = ({name, type}) => { 
     const Icon = icons[type];
-    return <Item>
+    return <Container>
         <Icon />
         <Name>{name}</Name>
-        <Path>(C:\Users\Chris\Documents\{name})</Path>
-    </Item>;
+        <Path>C:\Users\Chris\Documents</Path>
+    </Container>;
 }

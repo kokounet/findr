@@ -2,19 +2,14 @@ import { useRef, MouseEvent } from 'react'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/react'
 import { appWindow } from '@tauri-apps/api/window'
-import { Title } from './components/Title'
 import { SearchBar } from './components/SearchBar'
 import { Results } from './components/Results'
 import { Helptip } from './components/Helptip'
 
-const Topbar = styled.div`
-  width: 100%;
-`;
-
 const Container = styled.div`
-  --primary-color: #61dafb;
+  --primary-color: #29B6F6;
   --background-color: #282c34b3;
-  background: var(--background-color);
+  background: transparent;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -46,10 +41,7 @@ function App() {
         }
       `}
     />
-    <Topbar>
-      <Title />
-      <SearchBar />
-    </Topbar>
+    <SearchBar />
     <Results />
     <Helptip />
   </Container>;

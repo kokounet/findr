@@ -1,15 +1,15 @@
 import styled from '@emotion/styled'
-
-import winKey from '../win_key.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindows } from '@fortawesome/free-brands-svg-icons';
 
 const Centered = styled.p`
     align-self: center;
+    font-size: 0.7em;
     color: gray;
 `;
 
-const KeyImage = styled.img`
-    width: 2ex;
-    pointer-events: none;
+const FaIcon = styled(FontAwesomeIcon)`
+    color: var(--primary-color);
 `;
 
 const Key = styled.kbd`
@@ -32,6 +32,6 @@ const Key = styled.kbd`
 
 export function Helptip() {
     return <Centered>
-        Press <Key><KeyImage src={winKey} alt="Win" /></Key>+<Key><span>/</span></Key> to toggle visibility of Findr.
+        Press <Key><FaIcon icon={faWindows} /></Key>+<Key><span>/</span></Key> to toggle visibility of Findr.
     </Centered>;
 }
