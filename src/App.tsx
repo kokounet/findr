@@ -1,37 +1,40 @@
-import { useRef, MouseEvent } from 'react'
-import styled from '@emotion/styled'
-import { Global, css } from '@emotion/react'
-import { appWindow } from '@tauri-apps/api/window'
-import { SearchBar } from './components/SearchBar'
-import { Results } from './components/Results'
-import { Helptip } from './components/Helptip'
+import { useRef, MouseEvent } from 'react';
+import styled from '@emotion/styled';
+import { Global, css } from '@emotion/react';
+import { appWindow } from '@tauri-apps/api/window';
+
+import { SearchBar } from './components/SearchBar';
 
 const Container = styled.div`
-  --primary-color: #29B6F6;
-  --background-color: #282c34b3;
+  --accent-main: #29B6F6;
+  --background-main: #282c34;
+  --background-light: #414752;
+  --background-dark: #282c34;
+  --text-main: white;
+  --text-background: #a0a0a0;
   background: transparent;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   text-align: center;
-  min-height: 100vh;
-  padding: 0 25%;
-  font-size: 2em;
-  color: white;
+  height: 70vh;
+  padding: 15vh 25%;
+  font-size: 1.5em;
+  color: var(--text-main);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 
-function App() {
+export function App() {
   const container = useRef(null);
 
-  function hide(e: MouseEvent) {
+  async function hide(e: MouseEvent) {
     if (e.target !== container.current) return;
     if (e.button !== 0) return; 
-    appWindow.hide();
+    await appWindow.hide();
   }
   return <Container ref={container} onMouseDown={hide}>
     <Global
@@ -42,9 +45,5 @@ function App() {
       `}
     />
     <SearchBar />
-    <Results />
-    <Helptip />
   </Container>;
 }
-
-export default App

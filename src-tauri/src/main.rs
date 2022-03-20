@@ -6,12 +6,15 @@
 use tauri::*;
 
 fn toggle_window_visibility(window: &Window) {
-    if window.is_visible().unwrap() {
-        window.hide().unwrap();
+    if window.is_visible().unwrap_or(true) {
+        window.hide().unwrap_or_default();
     } else {
-        window.show().unwrap();
-        window.maximize().unwrap();
-        window.set_focus().unwrap();
+        window.show().unwrap_or_default();
+        window.maximize().unwrap_or_default();
+        window.set_focus().unwrap_or_default();
+        window
+            .emit("focused", Option::<String>::None)
+            .unwrap_or_default();
     }
 }
 
@@ -46,7 +49,7 @@ fn main() {
                     .register("SUPER+/", move || {
                         toggle_window_visibility(&window);
                     })
-                    .unwrap();
+                    .unwrap_or_default();
             }
             Ok(())
         })

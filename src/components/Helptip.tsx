@@ -4,12 +4,15 @@ import { faWindows } from '@fortawesome/free-brands-svg-icons';
 
 const Centered = styled.p`
     align-self: center;
-    font-size: 0.7em;
-    color: gray;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0.2em 10em;
+    border-top: solid 1px #80808080;
+    color: var(--text-background);
 `;
 
 const FaIcon = styled(FontAwesomeIcon)`
-    color: var(--primary-color);
+    color: var(--accent-main);
 `;
 
 const Key = styled.kbd`
@@ -25,9 +28,9 @@ const Key = styled.kbd`
     min-width: 2ex;
     max-height: 2ex;
     display: inline-flex;
-    justify-content: center;
     align-items: center;
-    vertical-align: middle;
+    justify-content: center;
+    vertical-align: text-bottom;
 `;
 
 export function Helptip() {
