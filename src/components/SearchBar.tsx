@@ -24,10 +24,6 @@ const Control = ({children, isFocused, ...props}: ControlProps<Option, false>) =
     <components.Control isFocused {...props}><SearchIcon/>{children}</components.Control>
 );
 
-const Input = ({autoFocus, ...props}: InputProps<Option, false>) => (
-    <components.Input autoFocus {...props}/>
-);
-
 const Result = ({children, data, ...props}: OptionProps<Option, false>) => {
     return <components.Option data={data} {...props}><ResultIcon {...getFileTypeIconProps({extension: data.extension})}/>{children}</components.Option>;
 };
@@ -169,7 +165,7 @@ export function SearchBar() {
 
     return <Container>
         <Findr
-            components={{Control, Option: Result, Input}}
+            components={{Control, Option: Result}}
             ref={element}
             classNamePrefix='Findr'
             placeholder='Search...'
